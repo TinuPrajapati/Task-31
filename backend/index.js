@@ -17,6 +17,7 @@ app.use(cors({
   origin: "https://task-31-n5z3.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials:true,
+  allowedHeaders: "Content-Type,Authorization",
 }))
 
 // User registration
