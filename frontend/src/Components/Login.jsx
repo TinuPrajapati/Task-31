@@ -14,7 +14,6 @@ function Login() {
        const respone=await axios.post(`${import.meta.env.VITE_API_URL}/login`,{
         username,password
       });
-      console.log(respone.data.token)
       localStorage.setItem("accessKey",respone.data.token)
       navigate("/welcome")
     }catch(err){

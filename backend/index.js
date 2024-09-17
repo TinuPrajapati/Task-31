@@ -4,21 +4,19 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const authenticateToken = require('./middleware/jwtManager');
 const cors = require("cors")
-
 const app = express();
-const port = 8080;
-var users = [];
+const users = [];
 
-const secretKey = process.env.SECRET_KEY; 
-
-app.use(express.urlencoded({extended:true}))
-app.use(express.json());
 app.use(cors({
   origin: process.env.frontend_url,
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  methods: ["GET", "POST"],
   credentials:true,
   allowedHeaders: "Content-Type,Authorization",
 }));
+
+app.use(express.urlencoded({extended:true}))
+app.use(express.json());
+
 
 app.get("/",(req,res)=>{
   res.send("Hello World");
@@ -27,9 +25,7 @@ app.get("/",(req,res)=>{
 // User registration
 app.post('/register', (req, res) => {
   const { username, password } = req.body;
-  // console.log(username,password)
   users.push({ username, password });
-  console.log(users);
   res.status(201).send('User registered');
 });
 
@@ -40,9 +36,8 @@ app.post('/login', (req, res) => {
 
   if (!user) return res.status(401).json('Please Check your details');
 
-  const token = jwt.sign({ username: user.username }, secretKey);
+  const token = jwt.sign({ username: user.username }, process.env.SECRET_KEY);
   res.status(200).json({ token });
-  console.log(users);
 });
 
 // Protected route
@@ -50,6 +45,6 @@ app.get('/protected', authenticateToken, (req, res) => {
   res.status(200).json(`Hello ${req.user.username}, this is a protected route.`);
 });
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+app.listen(8080, () => {
+  console.log(`Server Start`);
 });

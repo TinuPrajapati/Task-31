@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React,{useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
@@ -6,16 +6,11 @@ import {useNavigate} from "react-router-dom";
 function Signup() {
   const [username ,setName] = useState("");
   const [password ,setPassword] = useState("");
-  const [url ,setUrl] = useState("")
   const navigate = useNavigate();
   
-  // useEffect(() => {
-  //   setUrl(p.env.url)
-  // },[])
 
   const sendData =async (e)=>{
     e.preventDefault();
-    console.log(url)
     try{
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/register`,{
         username,password

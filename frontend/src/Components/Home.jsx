@@ -11,7 +11,7 @@ function Home() {
     if (storedToken) {
       setToken(storedToken);
     }else{
-        setError("No token found");
+        alert("No token found");
     }
   }, [getdata]);
 
@@ -30,7 +30,7 @@ function Home() {
   return (
     <>
     <h1>Welcome</h1>
-    <button onClick={getdata}>Check Data</button>
+    <button onClick={getdata} className="border-2 py-2 px-6">Check Data</button>
     {msg && <p>{msg}</p>}
     </>
   );
