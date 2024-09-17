@@ -13,7 +13,7 @@ function Home() {
     }else{
       setMsg("Please Login first and then check data");
     }
-  }, [getdata]);
+  }, []);
 
   async function getdata() {
     
