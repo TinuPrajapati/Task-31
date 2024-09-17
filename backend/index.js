@@ -14,7 +14,7 @@ const secretKey = process.env.SECRET_KEY;
 app.use(express.urlencoded({extended:true}))
 app.use(express.json());
 app.use(cors({
-  origin: "*",
+  origin: "https://task-31-n5z3.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials:true,
 }))
