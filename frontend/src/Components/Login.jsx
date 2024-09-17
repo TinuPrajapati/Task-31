@@ -10,7 +10,7 @@ function Login() {
   const sendData =async (e)=>{
     e.preventDefault();
     try{
-       const respone=await axios.post("http://localhost:8080/login",{
+       const respone=await axios.post("https://task-31-eight.vercel.app/login",{
         username,password
       });
       console.log(respone.data.token)

@@ -7,7 +7,7 @@ function Signup() {
 
   const sendData =async (e)=>{
     try{
-       await axios.post("http://localhost:8080/register",{
+       await axios.post("https://task-31-eight.vercel.app/register",{
         username,password
       })
     }catch(err){

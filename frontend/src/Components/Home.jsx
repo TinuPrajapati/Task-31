@@ -17,7 +17,7 @@ function Home() {
 
   async function getdata() {
     try {
-      const respone = await axios.get("http://localhost:8080/protected", {
+      const respone = await axios.get("https://task-31-eight.vercel.app/protected", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMsg(respone.data);
