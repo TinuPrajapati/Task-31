@@ -7,12 +7,14 @@ const cors = require("cors")
 const app = express();
 const users = [];
 
-app.use(cors({
-  origin: process.env.frontend_url,
-  methods: ["GET", "POST"],
-  credentials:true,
-  allowedHeaders: "Content-Type,Authorization",
-}));
+// app.use(cors({
+//   origin: process.env.frontend_url,
+//   methods: ["GET", "POST"],
+//   credentials:true,
+//   allowedHeaders: "Content-Type,Authorization",
+// }));
+
+app.use(cors())
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json());
