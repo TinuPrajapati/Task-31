@@ -18,7 +18,11 @@ app.use(cors({
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials:true,
   allowedHeaders: "Content-Type,Authorization",
-}))
+}));
+
+app.get("/",(req,res)=>{
+  res.send("Hello World");
+})
 
 // User registration
 app.post('/register', (req, res) => {
