@@ -11,12 +11,11 @@ function Home() {
     if (storedToken) {
       setToken(storedToken);
     }else{
-      setMsg("Please Login first and then check data");
+      alert("Please Login first and then check data");
     }
-  }, [getdata]);
+  }, []);
 
   async function getdata() {
-    
     try {
       const respone = await axios.get(`${import.meta.env.VITE_API_URL}/protected`, {
         headers: { Authorization: `Bearer ${token}` },
