@@ -8,10 +8,11 @@ function Home() {
 
   useEffect(() => {
     const storedToken = localStorage.getItem("accessKey");
+    console.log(storedToken)
     if (storedToken) {
       setToken(storedToken);
     }else{
-        alert("No token found");
+      setMsg("Please Login first and then check data");
     }
   }, [getdata]);
 
