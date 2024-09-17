@@ -16,8 +16,9 @@ function Home() {
   }, [getdata]);
 
   async function getdata() {
+    
     try {
-      const respone = await axios.get("https://task-31-eight.vercel.app/protected", {
+      const respone = await axios.get(`${import.meta.env.VITE_API_URL}/protected`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMsg(respone.data);

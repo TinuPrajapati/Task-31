@@ -1,16 +1,17 @@
 import React,{useState} from "react";
 import axios from "axios";
-import {useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom";
 
 function Login() {
   const [username ,setName] = useState("");
   const [password ,setPassword] = useState("");
   const navigate = useNavigate();
+  const url = import.meta.env.url;
 
   const sendData =async (e)=>{
     e.preventDefault();
     try{
-       const respone=await axios.post("https://task-31-eight.vercel.app/login",{
+       const respone=await axios.post(`${import.meta.env.VITE_API_URL}/login`,{
         username,password
       });
       console.log(respone.data.token)

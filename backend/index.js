@@ -7,14 +7,14 @@ const cors = require("cors")
 
 const app = express();
 const port = 8080;
-const users = [];
+var users = [];
 
 const secretKey = process.env.SECRET_KEY; 
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json());
 app.use(cors({
-  origin: "https://task-31-n5z3.vercel.app",
+  origin: process.env.frontend_url,
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials:true,
   allowedHeaders: "Content-Type,Authorization",
@@ -23,7 +23,9 @@ app.use(cors({
 // User registration
 app.post('/register', (req, res) => {
   const { username, password } = req.body;
+  // console.log(username,password)
   users.push({ username, password });
+  console.log(users);
   res.status(201).send('User registered');
 });
 
@@ -36,6 +38,7 @@ app.post('/login', (req, res) => {
 
   const token = jwt.sign({ username: user.username }, secretKey);
   res.status(200).json({ token });
+  console.log(users);
 });
 
 // Protected route
