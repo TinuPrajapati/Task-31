@@ -4,7 +4,6 @@ import axios from "axios";
 function Home() {
   const [msg, setMsg] = useState("");
   const [token, setToken] = useState("");
-  const [error, setError] = useState("");
 
   useEffect(() => {
     const storedToken = localStorage.getItem("accessKey");
@@ -24,7 +23,7 @@ function Home() {
       });
       setMsg(respone.data);
     } catch (err) {
-      setError(err.message);
+      setMsg(err.message);
     }
   }
 
